@@ -1,5 +1,6 @@
 import { GetStaticProps } from 'next';
 
+import Prismic from '@prismicio/client';
 import { getPrismicClient } from '../services/prismic';
 
 import commonStyles from '../styles/common.module.scss';
@@ -28,9 +29,9 @@ export default function Home() {
   return <h1 style={{ fontFamily: 'Inter' }}>Hello world</h1>;
 }
 
-// export const getStaticProps = async () => {
-//   // const prismic = getPrismicClient({});
-//   // const postsResponse = await prismic.getByType(TODO);
+export const getStaticProps = async () => {
+  const prismic = getPrismicClient({});
+  const postsResponse = await prismic.getByType([Prismic.pr], {});
 
-//   // TODO
-// };
+  return {};
+};
